@@ -1,11 +1,13 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {Redirect} from 'react-router-dom'
 
 class Login extends Component {
   onClickLogin = async () => {
     const apiUrl = 'https://apis.ccbp.in/login'
     const options = {
       method: 'POST',
+      body: JSON.stringify({username: 'rahul', password: 'rahul@2021'}),
     }
 
     const response = await fetch(apiUrl, options)
@@ -21,6 +23,10 @@ class Login extends Component {
   }
 
   render() {
+    const token = Cookies.get('jwt_token')
+    if (token !== undefined) {
+      return <Redirect to="/" />
+    }
     return (
       <>
         <h1>Please Login</h1>

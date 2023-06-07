@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
+import {withRouter} from 'react-router-dom'
 
 class LogoutButton extends Component {
   onClickLogout = () => {
@@ -16,4 +17,5 @@ class LogoutButton extends Component {
     )
   }
 }
-export default LogoutButton
+
+export default withRouter(LogoutButton)
